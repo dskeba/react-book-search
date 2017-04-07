@@ -1,12 +1,13 @@
 
 import React from 'react'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 import Config from 'AppConfig'
 
 import BookService from '../services/BookService'
 
-import BookList from './BookList.jsx'
-import SearchBox from './SearchBox.jsx'
+import Search from './Search.jsx'
+import Saved from './Saved.jsx'
 
 class App extends React.Component {
   constructor (props) {
@@ -42,12 +43,29 @@ class App extends React.Component {
   }
   render () {
     return (
-      <div>
-        <h1><i className='fa fa-book' /> React Book Search</h1>
-        <SearchBox onSearch={this.searchBooks} />
-        <hr />
-        <BookList books={this.state.books} />
-      </div>
+      <Router>
+        <div>
+          <div>
+            <h1>
+              <i className='fa fa-book' /> React Book Search
+            </h1>
+          </div>
+          <hr />
+          <div>
+            <Link to='/'>Search</Link>
+          </div>
+          <div>
+            <Link to='Saved'>Saved</Link>
+          </div>
+          <hr />
+          <Route exact path='/' render={() => (
+            <Search onSearch={this.searchBooks} books={this.state.books} />
+          )} />
+          <Route path='/Saved' render={() => (
+            <Saved />
+          )} />
+        </div>
+      </Router>
     )
   }
 }
