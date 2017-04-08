@@ -23,7 +23,7 @@ class SearchBox extends React.Component {
       <div>
         <input type='text' value={this.state.value} onChange={this.onChange} />
         &nbsp;
-        <button onClick={this.onSearch}>Search</button>
+        <button onClick={this.onSearch}><i className='fa fa-search' /> Search</button>
       </div>
     )
   }

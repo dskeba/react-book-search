@@ -6,7 +6,7 @@ import Book from './Book.jsx'
 class Saved extends React.Component {
   render () {
     return (
-      <div>
+      <div className='book-list'>
         <h2>Saved Books</h2>
         <p>
           Your saved books will be displayed here
