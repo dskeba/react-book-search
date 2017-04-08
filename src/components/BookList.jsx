@@ -12,7 +12,7 @@ class BookList extends React.Component {
   render () {
     this.listBooks = this.props.books.map((book) => {
       return (
-        <Book key={book.id} title={book.title} thumbnail={book.thumbnail} />
+        <Book key={book.id} title={book.title} thumbnail={book.thumbnail} onSave={(book) => this.props.onSave(book)} />
       )
     })
     return (
@@ -24,7 +24,8 @@ class BookList extends React.Component {
 }
 
 BookList.propTypes = {
-  books: React.PropTypes.array.isRequired
+  books: React.PropTypes.array.isRequired,
+  onSave: React.PropTypes.func.isRequired
 }
 
 export default BookList

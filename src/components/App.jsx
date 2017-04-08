@@ -13,11 +13,13 @@ class App extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      books: []
+      books: [],
+      saved: []
     }
     console.log(`App is starting in ${Config.mode} mode...`)
     this.searchBooks = this.searchBooks.bind(this)
     this.onListVolumesDone = this.onListVolumesDone.bind(this)
+    this.onSave = this.onSave.bind(this)
   }
   searchBooks (query) {
     const bookService = new BookService()
@@ -38,7 +40,16 @@ class App extends React.Component {
       }
     })
     this.setState({
-      books: bookItems
+      books: bookItems,
+      saved: this.state.saved
+    })
+  }
+  onSave (book) {
+    const savedItems = this.state.saved
+    savedItems.push(book)
+    this.setState({
+      books: this.state.books,
+      saved: savedItems
     })
   }
   render () {
@@ -59,10 +70,10 @@ class App extends React.Component {
           </div>
           <hr />
           <Route exact path='/' render={() => (
-            <Search onSearch={this.searchBooks} books={this.state.books} />
+            <Search onSearch={this.searchBooks} books={this.state.books} onSave={(book) => this.onSave(book)} />
           )} />
           <Route path='/Saved' render={() => (
-            <Saved />
+            <Saved saved={this.state.saved} />
           )} />
         </div>
       </Router>

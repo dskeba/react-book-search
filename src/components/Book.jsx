@@ -8,6 +8,7 @@ class Book extends React.Component {
         <div>
           <h3>{ this.props.title }</h3>
           <div><img src={this.props.thumbnail} /></div>
+          <button onClick={() => this.props.onSave(this.props.title)}>Save</button>
         </div>
       </div>
     )
@@ -16,7 +17,8 @@ class Book extends React.Component {
 
 Book.propTypes = {
   title: React.PropTypes.string.isRequired,
-  thumbnail: React.PropTypes.string
+  thumbnail: React.PropTypes.string,
+  onSave: React.PropTypes.func.isRequired
 }
 
 export default Book
