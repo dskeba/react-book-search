@@ -22,8 +22,7 @@ class App extends React.Component {
     this.onSave = this.onSave.bind(this)
   }
   searchBooks (query) {
-    const bookService = new BookService()
-    bookService.listVolumes(query, this.onListVolumesDone)
+    BookService.listVolumes(query, this.onListVolumesDone)
   }
   onListVolumesDone (response) {
     this.setState({
@@ -33,7 +32,7 @@ class App extends React.Component {
   }
   onSave (book) {
     let newSaved = this.state.saved.slice()
-    let savedIndex = newSaved.indexOf(book)
+    let savedIndex = BookService.indexOfBook(newSaved, book)
     if (savedIndex > -1) {
       newSaved.splice(savedIndex, 1)
     } else {

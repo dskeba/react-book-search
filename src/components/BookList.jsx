@@ -1,22 +1,26 @@
 
 import React from 'react'
+
+import BookService from '../services/BookService'
+
 import Book from './Book.jsx'
 
 class BookList extends React.Component {
   render () {
-    this.listBooks = this.props.books.map((book) => {
-      return (
-        <Book
-          key={book.id}
-          book={book}
-          unsave={(this.props.saved.indexOf(book) > -1)}
-          onSave={(book) => this.props.onSave(book)}
-        />
-      )
-    })
     return (
       <div className='book-list'>
-        { this.listBooks }
+        {
+          this.props.books.map((book) => {
+            return (
+              <Book
+                key={book.id}
+                book={book}
+                unsave={(BookService.indexOfBook(this.props.saved, book) > -1)}
+                onSave={(book) => this.props.onSave(book)}
+              />
+            )
+          })
+        }
       </div>
     )
   }
