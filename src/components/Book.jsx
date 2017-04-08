@@ -5,8 +5,10 @@ class Book extends React.Component {
   render () {
     return (
       <div className='book-card'>
-        <h3>{ this.props.title }</h3>
-        <div><img src={this.props.thumbnail} /></div>
+        <div>
+          <h3>{ this.props.title }</h3>
+          <div><img src={this.props.thumbnail} /></div>
+        </div>
       </div>
     )
   }

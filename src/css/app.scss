@@ -8,12 +8,13 @@ $fa-font-path: "~font-awesome/fonts";
 
 .book-card {
   box-sizing: border-box;
-  display: block;
   width: 300px;
   height: 300px;
+  float: left;
   padding: 1em;
   border: 1px solid #ccc;
-  margin: 1em auto;
+  margin: 1em;
+
 
   img {
     margin-left:auto;
@@ -24,4 +25,10 @@ $fa-font-path: "~font-awesome/fonts";
 
 .book-card:hover {
   background-color: #eee;
+}
+
+.book-list {
+  text-align:center;
+  width: 1000px;
+  margin: 1em auto;
 }

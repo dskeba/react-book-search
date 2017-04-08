@@ -16,7 +16,7 @@ class BookList extends React.Component {
       )
     })
     return (
-      <div>
+      <div className='book-list'>
         { this.listBooks }
       </div>
     )
