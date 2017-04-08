@@ -12,7 +12,7 @@ class BookList extends React.Component {
   render () {
     this.listBooks = this.props.books.map((book) => {
       return (
-        <Book key={book.id} title={book.title} thumbnail={book.thumbnail} onSave={(book) => this.props.onSave(book)} />
+        <Book key={book.id} book={book} onSave={(book) => this.props.onSave(book)} />
       )
     })
     return (

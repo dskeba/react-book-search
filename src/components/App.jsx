@@ -26,30 +26,15 @@ class App extends React.Component {
     bookService.listVolumes(query, this.onListVolumesDone)
   }
   onListVolumesDone (response) {
-    let i = 0
-    const bookItems = response.items.map((item) => {
-      i += 1
-      let tb = ''
-      if (item.volumeInfo.imageLinks) {
-        tb = item.volumeInfo.imageLinks.thumbnail
-      }
-      return {
-        id: i,
-        title: item.volumeInfo.title,
-        thumbnail: tb
-      }
-    })
     this.setState({
-      books: bookItems,
+      books: response.items,
       saved: this.state.saved
     })
   }
   onSave (book) {
-    const savedItems = this.state.saved
-    savedItems.push(book)
     this.setState({
       books: this.state.books,
-      saved: savedItems
+      saved: this.state.saved.concat([book])
     })
   }
   render () {

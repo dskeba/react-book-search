@@ -6,9 +6,10 @@ class Book extends React.Component {
     return (
       <div className='book-card'>
         <div>
-          <h3>{ this.props.title }</h3>
-          <div><img src={this.props.thumbnail} /></div>
-          <button onClick={() => this.props.onSave(this.props.title)}>Save</button>
+          <h3>{ this.props.book.volumeInfo.title }</h3>
+          <div><img src={this.props.book.volumeInfo.imageLinks.thumbnail} /></div>
+          <br />
+          <button onClick={() => this.props.onSave(this.props.book)}>Save</button>
         </div>
       </div>
     )
@@ -16,8 +17,7 @@ class Book extends React.Component {
 }
 
 Book.propTypes = {
-  title: React.PropTypes.string.isRequired,
-  thumbnail: React.PropTypes.string,
+  book: React.PropTypes.object.isRequired,
   onSave: React.PropTypes.func.isRequired
 }
 
