@@ -1,6 +1,8 @@
 
 import React from 'react'
 
+import Book from './Book.jsx'
+
 class Saved extends React.Component {
   render () {
     return (
@@ -12,9 +14,7 @@ class Saved extends React.Component {
         <div>
           {this.props.saved.map((book) => {
             return (
-              <div key={book.id}>
-                {book.volumeInfo.title}
-              </div>
+              <Book key={book.id} book={book} unsave onSave={(book) => this.props.onSave(book)} />
             )
           })}
         </div>
@@ -24,7 +24,8 @@ class Saved extends React.Component {
 }
 
 Saved.propTypes = {
-  saved: React.PropTypes.array.isRequired
+  saved: React.PropTypes.array.isRequired,
+  onSave: React.PropTypes.func.isRequired
 }
 
 export default Saved

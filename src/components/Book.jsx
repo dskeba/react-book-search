@@ -9,7 +9,9 @@ class Book extends React.Component {
           <h3>{ this.props.book.volumeInfo.title }</h3>
           <div><img src={this.props.book.volumeInfo.imageLinks.thumbnail} /></div>
           <br />
-          <button onClick={() => this.props.onSave(this.props.book)}>Save</button>
+          <button onClick={() => this.props.onSave(this.props.book)}>
+            {this.props.unsave ? 'Unsave' : 'Save'}
+          </button>
         </div>
       </div>
     )
@@ -18,6 +20,7 @@ class Book extends React.Component {
 
 Book.propTypes = {
   book: React.PropTypes.object.isRequired,
+  unsave: React.PropTypes.bool.isRequired,
   onSave: React.PropTypes.func.isRequired
 }
 

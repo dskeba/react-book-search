@@ -3,16 +3,15 @@ import React from 'react'
 import Book from './Book.jsx'
 
 class BookList extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      books: []
-    }
-  }
   render () {
     this.listBooks = this.props.books.map((book) => {
       return (
-        <Book key={book.id} book={book} onSave={(book) => this.props.onSave(book)} />
+        <Book
+          key={book.id}
+          book={book}
+          unsave={(this.props.saved.indexOf(book) > -1)}
+          onSave={(book) => this.props.onSave(book)}
+        />
       )
     })
     return (
@@ -25,6 +24,7 @@ class BookList extends React.Component {
 
 BookList.propTypes = {
   books: React.PropTypes.array.isRequired,
+  saved: React.PropTypes.array.isRequired,
   onSave: React.PropTypes.func.isRequired
 }
 

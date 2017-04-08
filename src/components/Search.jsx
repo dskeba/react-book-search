@@ -11,7 +11,7 @@ class Search extends React.Component {
         <h2>Search Books</h2>
         <SearchBox onSearch={this.props.onSearch} />
         <br />
-        <BookList books={this.props.books} onSave={(book) => this.props.onSave(book)} />
+        <BookList books={this.props.books} saved={this.props.saved} onSave={(book) => this.props.onSave(book)} />
       </div>
     )
   }
@@ -20,6 +20,7 @@ class Search extends React.Component {
 Search.propTypes = {
   onSearch: React.PropTypes.func.isRequired,
   books: React.PropTypes.array.isRequired,
+  saved: React.PropTypes.array.isRequired,
   onSave: React.PropTypes.func.isRequired
 }
 

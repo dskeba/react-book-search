@@ -32,9 +32,16 @@ class App extends React.Component {
     })
   }
   onSave (book) {
+    let newSaved = this.state.saved.slice()
+    let savedIndex = newSaved.indexOf(book)
+    if (savedIndex > -1) {
+      newSaved.splice(savedIndex, 1)
+    } else {
+      newSaved = newSaved.concat([book])
+    }
     this.setState({
       books: this.state.books,
-      saved: this.state.saved.concat([book])
+      saved: newSaved
     })
   }
   render () {
@@ -55,10 +62,10 @@ class App extends React.Component {
           </div>
           <hr />
           <Route exact path='/' render={() => (
-            <Search onSearch={this.searchBooks} books={this.state.books} onSave={(book) => this.onSave(book)} />
+            <Search onSearch={this.searchBooks} books={this.state.books} saved={this.state.saved} onSave={(book) => this.onSave(book)} />
           )} />
           <Route path='/Saved' render={() => (
-            <Saved saved={this.state.saved} />
+            <Saved saved={this.state.saved} onSave={(book) => this.onSave(book)} />
           )} />
         </div>
       </Router>
