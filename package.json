@@ -4,6 +4,7 @@
   "description": "A simple book search app built using React and Google Book API",
   "main": "index.js",
   "scripts": {
+    "build": "webpack --progress",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server"
   },

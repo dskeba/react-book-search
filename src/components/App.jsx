@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Route, Link } from 'react-router-dom'
 
 import Config from 'AppConfig'
 
@@ -45,7 +45,7 @@ class App extends React.Component {
   }
   render () {
     return (
-      <Router>
+      <BrowserRouter basename='/react-book-search'>
         <div>
           <div>
             <h1>
@@ -57,7 +57,7 @@ class App extends React.Component {
             <Link to='/'>Search</Link>
           </div>
           <div>
-            <Link to='Saved'>Saved</Link>
+            <Link to='/Saved'>Saved</Link>
           </div>
           <hr />
           <Route exact path='/' render={() => (
@@ -67,7 +67,7 @@ class App extends React.Component {
             <Saved saved={this.state.saved} onSave={(book) => this.onSave(book)} />
           )} />
         </div>
-      </Router>
+      </BrowserRouter>
     )
   }
 }

@@ -1,2 +1,3 @@
 node_modules
 config/api_keys.js
+dist
